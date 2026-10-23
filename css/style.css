@@ -1,0 +1,2861 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --ink: #17243b;
+  --muted: #68748a;
+  --paper: #f7f4ec;
+  --white: #fffdf8;
+  --line: rgba(23,36,59,.12);
+  --accent: #bd2424;
+  --gold: #d5a13b;
+  --navy: #17345d;
+  --shadow: 0 24px 70px rgba(32,40,57,.13);
+
+  /* ==================================================
+    GOLDEN RATIO DESIGN SYSTEM
+    φ (phi) ≈ 1.618
+    38.2% : 61.8% = golden-ratio division
+     ================================================== */
+  --phi: 1.618;
+  --golden-small: 38.2%;
+  --golden-large: 61.8%;
+
+  /* Golden-ratio-inspired spacing scale */
+  --space-1: 8px;
+  --space-2: 13px;
+  --space-3: 21px;
+  --space-4: 34px;
+  --space-5: 55px;
+  --space-6: 89px;
+
+  /* Golden-ratio-inspired type scale */
+  --text-body: 16px;
+  --text-small: 13px;
+  --text-lead: 21px;
+  --text-section: clamp(32px, 3.8vw, 52px);
+  --text-hero: clamp(52px, 6vw, 84px);
+}
+
+#home,
+#explore,
+#kamus,
+#about {
+  scroll-margin-top: 78px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 80% 15%, rgba(213,161,59,.11), transparent 26rem),
+    linear-gradient(180deg, #fbfaf6 0%, var(--paper) 100%);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: var(--text-body);
+}
+button { font: inherit; }
+
+.topbar {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(18px, 5vw, 80px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(251,250,246,.86);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+body.modal-open .topbar {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.modal-backdrop {
+  z-index: 200;
+}
+.brand {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.brand-mark { font-size: 27px; }
+.brand strong { display:block; font-size: 15px; }
+.brand small { color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.nav { 
+  display: flex; 
+  gap: var(--space-1); 
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 11px 16px; 
+  border-radius: 30px; 
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover, .nav-link.active { 
+  background: #fff; 
+  color: var(--ink); 
+  box-shadow: 0 5px 20px rgba(0,0,0,.05); 
+}
+
+/* ==================================================
+  GOLDEN RATIO: HERO
+  Teks ≈ 38.2% | Visual ≈ 61.8%
+   ================================================== */
+.hero {
+  min-height: calc(100vh - 78px);
+  padding: clamp(55px, 6vw, 89px) clamp(20px, 5vw, 80px) clamp(55px, 7vw, 89px);
+  display: grid;
+  grid-template-columns: .618fr 1fr;
+  align-items: center;
+  gap: clamp(34px, 3.4vw, 55px);
+  overflow: hidden;
+}
+.hero-copy { max-width: 590px; position: relative; z-index: 2; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--accent); }
+.eyebrow span { display:inline-block; width: 25px; height: 2px; background: currentColor; vertical-align: middle; margin-right: 8px; }
+h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: var(--text-hero);
+  line-height: .99;
+  margin: var(--space-3) 0;
+  letter-spacing: -.045em;
+}
+h1 em { color: var(--accent); font-style: normal; }
+.lead { color: var(--muted); font-size: var(--text-lead); line-height: 1.8; max-width: 510px; }
+.hero-actions { display:flex; gap: var(--space-2); margin: var(--space-4) 0 var(--space-2); }
+.primary-btn, .ghost-btn {
+  border-radius: 999px; padding: 14px 20px; border: 1px solid transparent; cursor: pointer;
+  font-weight: 700; transition: .25s ease;
+}
+.primary-btn { background: var(--ink); color: white; box-shadow: 0 12px 30px rgba(23,36,59,.18); }
+.primary-btn:hover { transform: translateY(-2px); box-shadow: 0 17px 35px rgba(23,36,59,.25); }
+.primary-btn span { margin-left: 12px; }
+.ghost-btn { background: transparent; border-color: var(--line); color: var(--ink); }
+.ghost-btn:hover { background:#fff; }
+.micro-note { font-size: 12px; color: var(--muted); }
+.micro-note span { color: var(--gold); }
+
+.hero-art { position: relative; min-height: 650px; display:grid; place-items:center; }
+.glow {
+  position:absolute; width: 440px; height:440px; border-radius:50%;
+  background: radial-gradient(circle, rgba(213,161,59,.19), rgba(189,36,36,.03) 55%, transparent 72%);
+  filter: blur(5px);
+}
+.orbit { position:absolute; border:1px solid rgba(23,52,93,.13); border-radius:50%; }
+.orbit-a { width:560px; height:560px; animation: spin 30s linear infinite; }
+.orbit-b { width:430px; height:430px; border-style:dashed; animation: spin 22s linear reverse infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.garuda-svg { width:min(620px, 92%); height:auto; overflow:visible; position:relative; z-index:2; }
+.sila-node { cursor:pointer; transition: transform .25s ease; transform-box: fill-box; transform-origin:center; }
+.sila-node circle { fill:#fffdf8; stroke:#bd2424; stroke-width:5; filter:url(#shadow); transition:.25s ease; }
+.sila-node text { font-size:28px; }
+.sila-node:hover, .sila-node:focus { transform:scale(1.13); outline:none; }
+.sila-node:hover circle, .sila-node:focus circle { fill:#fff4e4; stroke:#a61d1d; }
+
+.floating-label {
+  position:absolute; z-index:4; padding:9px 12px; background:rgba(255,253,248,.9);
+  border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(23,36,59,.08);
+  font-size:11px; color:var(--muted); animation: float 5s ease-in-out infinite;
+}
+.floating-label span { font-weight:800; color:var(--accent); margin-right:7px; }
+.label-top { top:5%; left:45%; }
+.label-right { top:39%; right:0; animation-delay:.8s; }
+.label-left { top:39%; left:0; animation-delay:1.4s; }
+.label-bottom-left { bottom:6%; left:11%; animation-delay:2s; }
+.label-bottom-right { bottom:6%; right:10%; animation-delay:2.7s; }
+@keyframes float { 50% { transform:translateY(-8px); } }
+
+/* ==================================================
+  GOLDEN RATIO: SECTION SPACING
+  34 / 55 / 89px mengikuti urutan Fibonacci
+  yang mendekati rasio emas.
+   ================================================== */
+.explore-section, .dictionary-section, .about-section { padding: var(--space-6) clamp(20px, 5vw, 80px); }
+.section-heading, .dictionary-heading { display:flex; justify-content:space-between; gap:var(--space-5); align-items:end; margin-bottom:var(--space-4); }
+.section-heading h2, .dictionary-heading h2, .about-box h2 { font-family:"Playfair Display", Georgia, serif; font-size:var(--text-section); line-height:1.05; margin:var(--space-2) 0 0; }
+.section-heading p, .dictionary-heading p { max-width:420px; color:var(--muted); line-height:1.7; font-size:var(--text-body); }
+
+/* ==================================================
+  GOLDEN RATIO: KARTU
+  Proporsi visual kartu ≈ 1 : 1.618
+   ================================================== */
+.sila-cards { display:grid; grid-template-columns:repeat(6, 1fr); gap:var(--space-3); }
+.sila-card:nth-child(1),
+.sila-card:nth-child(2),
+.sila-card:nth-child(3) {
+  grid-column: span 2;
+}
+
+.sila-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.sila-card:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+.sila-card {
+  min-height: 300px;
+  aspect-ratio: auto;
+  position:relative; text-align:left; padding:var(--space-3); border:1px solid var(--line);
+  background:rgba(255,253,248,.72); border-radius:24px; cursor:pointer; transition:.3s ease;
+  color:var(--ink); overflow:hidden;
+}
+.sila-card:hover { transform:translateY(-8px); box-shadow:var(--shadow); background:#fff; }
+.card-number { position:absolute; top:20px; right:20px; color:#9aa2af; font-size:11px; }
+.card-icon { display:block; font-size:34px; margin-bottom:var(--space-4); line-height: 1; }
+.card-icon img,
+.card-icon svg {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  display: block;
+}
+.sila-card strong { display:block; font-size:16px; line-height:1.35; max-width: 90%; }
+.sila-card small { display:block; color:var(--muted); margin-top:var(--space-2); line-height:1.5; max-width: 92%; }
+.sila-card i { position:absolute; bottom:21px; right:21px; font-style:normal; font-size:20px; }
+.card-1:hover { border-color:#d7b66b; }
+.card-2:hover { border-color:#FF2400; }
+.card-3:hover { border-color:#0B6623; }
+.card-4:hover { border-color:#C21807; }
+.card-5:hover { border-color:#00A86D; }
+
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+  display: flex;
+}
+
+/* Container Game Utama (Proporsional & Seimbang) */
+.chat-game-container {
+  background: var(--white);
+  width: 100%;
+  max-width: 520px;
+  height: 85vh;
+  max-height: 660px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Header Modal Game */
+.chat-header {
+  padding: 18px 24px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.chat-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  background: #fff5d6;
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.chat-header strong {
+  font-size: 15px;
+  color: var(--ink);
+  display: block;
+}
+
+.chat-header small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.chat-score-badge {
+  background: var(--white);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+/* Area Isi Modal Game (Chat Body / Skenario P3K) */
+.chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Area Footer Game */
+.chat-footer {
+  padding: 16px 24px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+/* Komponen Khusus Sila 1 (Chat Bubbles & Chips) */
+.chat-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.chat-bubble.incoming {
+  background: var(--paper);
+  color: var(--ink);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--line);
+}
+.chat-bubble.outgoing {
+  background: var(--ink);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.chip-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.chip-btn {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chip-btn:hover {
+  border-color: var(--gold);
+  background: #fffdf8;
+}
+.next-btn {
+  background: var(--ink);
+  color: white;
+  border: none;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+.next-btn:hover {
+  background: #253959;
+}
+
+/* Komponen Khusus Sila 2 (Kotak P3K & Toolbox Checkbox) */
+.scenario-card {
+  background: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+}
+
+.toolbox-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toolbox-item {
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.toolbox-item:hover {
+  border-color: var(--gold);
+  background: #fffdf8;
+}
+
+/* Efek visual ketika checkbox dipilih */
+.toolbox-item:has(input[type="checkbox"]:checked) {
+  background: #fdf8ee;
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(213, 161, 59, 0.15);
+}
+
+.toolbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tool-label {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.chat-feedback {
+  background: #f6f2e8;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+
+/* ==================================================
+   CAMPUS CHAT MINI GAME (SILA 1)
+   Sistem Golden Ratio & Token Desain
+   ================================================== */
+.chat-game-container {
+  width: min(520px, 100%);
+  height: min(620px, 85vh);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.modal-backdrop.open .chat-game-container {
+  transform: translateY(0) scale(1);
+}
+
+.chat-header {
+  padding: var(--space-2) var(--space-3);
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.chat-avatar {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.chat-user-info strong {
+  display: block;
+  font-size: 15px;
+  color: var(--white);
+}
+
+.chat-user-info small {
+  display: block;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chat-score-badge {
+  background: rgba(213, 161, 59, 0.2);
+  border: 1px solid rgba(213, 161, 59, 0.4);
+  color: var(--gold);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chat-body {
+  flex: 1;
+  padding: var(--space-3);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: linear-gradient(180deg, #fbfaf6 0%, var(--paper) 100%);
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  animation: chatFadeIn 0.3s ease;
+}
+
+.chat-bubble.incoming {
+  background: var(--white);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: 0 4px 15px rgba(23, 36, 59, 0.04);
+}
+
+.chat-bubble.outgoing {
+  background: var(--navy);
+  color: var(--white);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-feedback {
+  background: rgba(213, 161, 59, 0.12);
+  border-left: 3px solid var(--gold);
+  padding: var(--space-2);
+  font-size: 12px;
+  color: var(--ink);
+  border-radius: 8px;
+  margin-top: 4px;
+  line-height: 1.5;
+  animation: chatFadeIn 0.3s ease;
+}
+
+.chat-footer {
+  padding: var(--space-2) var(--space-3);
+  background: var(--white);
+  border-top: 1px solid var(--line);
+}
+
+.chip-label {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: var(--space-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chip-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.chip-btn {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.chip-btn:hover {
+  background: var(--white);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 36, 59, 0.06);
+}
+
+.next-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--ink);
+  color: var(--white);
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.next-btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(189, 36, 36, 0.2);
+}
+
+@keyframes chatFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================================
+  KAMUS ETIKA DIGITAL
+  Golden Ratio:
+  Heading Ratio ≈ 38.2% (.618fr) : 61.8% (1fr)
+   ================================================== */
+
+/* SEARCH BAR */
+.dictionary-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 400px;
+  max-width: 100%;
+  padding: 11px 16px;
+  background: rgba(255, 253, 248, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: text;
+}
+
+.dictionary-search:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 10px 30px rgba(23, 36, 59, 0.08);
+}
+
+.dictionary-search span {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.dictionary-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+
+.dictionary-search input::placeholder {
+  color: #9aa2af;
+}
+
+/* GRID LAYOUT (DESKTOP) */
+.dictionary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+/* KARTU ISTILAH */
+.dictionary-card {
+  background: rgba(255, 253, 248, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 21px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.dictionary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  background: #ffffff;
+}
+
+/* TOMBOL TRIGGER / HEADER KARTU */
+.dictionary-trigger {
+  width: 100%;
+  min-height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dictionary-trigger > span:first-child {
+  min-width: 0;
+}
+
+.dictionary-trigger small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.dictionary-trigger strong {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.dictionary-icon {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ANIMASI ISI AKORDEON */
+.dictionary-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 var(--space-3);
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.35s ease;
+}
+
+.dictionary-card.open .dictionary-content {
+  max-height: 600px;
+  opacity: 1;
+  padding: 0 var(--space-3) var(--space-4);
+}
+
+.dictionary-card.open .dictionary-icon {
+  transform: rotate(45deg);
+  background: #ffffff;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* DESKRIPSI ISTILAH */
+.dictionary-content > p {
+  margin: 0 0 var(--space-3);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* BOX KAITAN PANCASILA */
+.dictionary-pancasila {
+  padding: var(--space-3);
+
+  background: #f6f2e8;
+  border-radius: 17px;
+
+  margin-bottom: var(--space-3);
+}
+
+.dictionary-pancasila small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+/* LIST CARA MENGHINDARI */
+.dictionary-action {
+  padding-top: var(--space-2);
+}
+
+.dictionary-action > strong {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+}
+
+.dictionary-action ul {
+  margin: 0;
+  padding-left: 20px;
+
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* STATE HASIL PENCARIAN KOSONG */
+.dictionary-empty {
+  display: none;
+  padding: var(--space-5);
+  color: var(--muted);
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 21px;
+  background: rgba(255, 253, 248, 0.4);
+}
+
+.dictionary-empty.show {
+  display: block;
+}
+
+/* ==================================================
+  GOLDEN RATIO: ABOUT
+  Konten ≈ 38.2% | Teks ≈ 61.8%
+   ================================================== */
+.about-box {
+  padding:var(--space-5); border-radius:30px; background:var(--navy); color:white; display:grid;
+  grid-template-columns:.618fr 1fr; gap:var(--space-5); box-shadow:var(--shadow);
+}
+.about-box .eyebrow { color:#e5bd68; }
+.about-box p { color:rgba(255,255,255,.72); line-height:1.8; font-size:var(--text-body); align-self:end; }
+
+.modal-backdrop {
+  position:fixed; inset:0; background:rgba(14,22,36,.62); backdrop-filter:blur(8px);
+  display:grid; place-items:center; padding:var(--space-3); opacity:0; pointer-events:none; transition:.25s ease; z-index:50;
+}
+.modal-backdrop.open { opacity:1; pointer-events:auto; }
+.info-modal {
+  width:min(760px, 100%); max-height:90vh; overflow:auto; background:#fffdf8; border-radius:28px;
+  display:grid; grid-template-columns:.618fr 1fr; position:relative; transform:translateY(20px) scale(.97); transition:.3s ease;
+  box-shadow:0 35px 100px rgba(0,0,0,.25);
+}
+.modal-backdrop.open .info-modal { transform:none; }
+.close-btn {
+  position:absolute; right:18px; top:15px; border:0; background:#fff; width:38px; height:38px;
+  border-radius:50%; font-size:26px; cursor:pointer; z-index:2; box-shadow:0 5px 18px rgba(0,0,0,.1);
+}
+.modal-visual {
+  min-height:100%; display:grid; place-items:center; font-size:72px; background:
+  radial-gradient(circle at 50% 40%, #fff5d6, transparent 45%), #f1e9d4;
+}
+.modal-icon-img {
+  width: clamp(120px, 13vw, 145px);
+  height: clamp(120px, 13vw, 145px);
+  object-fit: contain;
+  display: block;
+}
+.modal-content { padding:var(--space-4) var(--space-4) var(--space-4); }
+.modal-kicker { font-size:11px; letter-spacing:.18em; color:var(--accent); font-weight:800; }
+.modal-content { 
+  padding: var(--space-4) var(--space-4) var(--space-4); 
+  min-width: 0;
+}
+
+.modal-content h2 { 
+  font-family: "Playfair Display", Georgia, serif; 
+  font-size: clamp(13px, 4vw, 21px);
+  line-height: 1.3;
+  margin: var(--space-2) 0 8px;
+  word-break: break-word; 
+  overflow-wrap: break-word;
+}
+.modal-content h3 { margin:0 0 18px; color:var(--gold); font-size:15px; }
+.modal-content p { color:var(--muted); line-height:1.75; font-size:var(--text-body); }
+.example-box { padding:18px; border-radius:17px; background:#f6f2e8; margin:var(--space-3) 0; }
+.example-box strong { font-size:13px; }
+.example-box ul { margin:10px 0 0; padding-left:20px; color:var(--muted); line-height:1.8; font-size:13px; }
+.full { width:100%; }
+
+.toast {
+  position:fixed; left:50%; bottom:28px; transform:translate(-50%, 20px); opacity:0; pointer-events:none;
+  padding:12px 18px; background:var(--ink); color:#fff; border-radius:999px; font-size:13px; z-index:80; transition:.25s;
+}
+.toast.show { opacity:1; transform:translate(-50%,0); }
+footer { display:flex; justify-content:space-between; padding:var(--space-3) clamp(20px, 5vw, 80px); border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 38px;
+  height: 38px;
+  padding: 9px 8px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ==================================================
+  RESPONSIVE: TABLET
+  Tetap mempertahankan proporsi golden ratio ketika
+  ruang cukup, lalu berubah menjadi satu kolom saat
+  layar lebih sempit.
+   ================================================== */
+@media (max-width: 1050px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 60px;
+  }
+
+  .hero-copy {
+    max-width: 700px;
+  }
+
+  .hero-art {
+    min-height: 580px;
+    margin-top: -30px;
+  }
+
+  /* Tablet: 3 kartu per baris */
+  .sila-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sila-card:nth-child(1),
+  .sila-card:nth-child(2),
+  .sila-card:nth-child(3),
+  .sila-card:nth-child(4),
+  .sila-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .about-box {
+    grid-template-columns: .618fr 1fr;
+  }
+}
+
+  .garuda-visual {
+  background: radial-gradient(circle at 50% 50%, rgba(213,161,59,.25), rgba(23,52,93,.08) 70%), #f8f4ea;
+  padding: 24px;
+}
+
+  .garuda-large-img {
+  width: clamp(140px, 18vw, 210px);
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.12));
+}
+
+  .garuda-info-box ul strong {
+  color: var(--ink);
+}
+  .dictionary-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .dictionary-intro,
+  .dictionary-search {
+    max-width: 100%;
+  }
+
+  .dictionary-intro {
+  margin-left: 0;
+}
+
+/* ==================================================
+  RESPONSIVE: HP
+  Pada HP proporsi tidak dipaksakan secara horizontal.
+  Golden ratio tetap dipakai untuk ukuran font,
+  spacing, dan rasio kartu.
+   ================================================== */
+@media (max-width: 720px) {
+  :root {
+    --text-lead: 16px;
+    --text-section: clamp(30px, 9vw, 42px);
+    --text-hero: clamp(42px, 13vw, 58px);
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+  .nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 18px;
+    left: 18px;
+    transform: translateY(-10px); /* Posisi awal animasi */
+    flex-direction: column;
+    background: rgba(251, 250, 246, 0.96);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 12px;
+    gap: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+  }
+  .nav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+  }
+
+  .hero { padding:var(--space-5) 20px var(--space-4); min-height:auto; gap:var(--space-4); }
+  h1 { font-size:var(--text-hero); }
+  .lead { font-size:var(--text-lead); }
+  .hero-actions { flex-direction:column; align-items:stretch; }
+  .hero-art { min-height:410px; }
+  .orbit-a { width:370px; height:370px; }
+  .orbit-b { width:285px; height:285px; }
+  .floating-label { font-size:9px; padding:7px 8px; }
+  .label-left { left:-5px; }
+  .label-right { right:-5px; }
+  .label-bottom-left, .label-bottom-right { bottom:0; }
+  
+  .modal-icon-img {
+    width: clamp(100px, 32vw, 130px);
+    height: clamp(100px, 32vw, 130px);
+  }
+  .sila-cards {
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+  .sila-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .sila-card {
+    aspect-ratio: auto;
+    min-height: 220px;
+    padding: 18px;
+    border-radius: 21px;
+  }
+  .sila-card:nth-child(1),
+  .sila-card:nth-child(2),
+  .sila-card:nth-child(3),
+  .sila-card:nth-child(4),
+  .sila-card:nth-child(5) {
+    grid-column: auto;
+  }
+  .card-icon { margin-bottom:var(--space-3); }
+  .section-heading, .about-box { grid-template-columns:1fr; display:grid; }
+  .section-heading { gap:var(--space-3); }
+  .explore-section, .dictionary-section, .about-section { padding:var(--space-5) 20px; }
+  .about-box { padding:var(--space-4); gap:var(--space-3); }
+  .info-modal { grid-template-columns:1fr; }
+  .modal-visual { min-height:150px; }
+  .modal-content { padding:var(--space-4) 24px; }
+  footer { padding:22px 20px; flex-direction:column; gap:7px; }
+}
+  .garuda-visual {
+    min-height: 180px;
+    padding: 18px;
+  }
+  
+  .garuda-large-img {
+    width: clamp(110px, 30vw, 150px);
+  }
+
+
+  .dictionary-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .dictionary-trigger {
+    min-height: 90px;
+    padding: var(--space-3);
+  }
+
+  .dictionary-trigger strong {
+    font-size: 20px;
+  }
+
+  .dictionary-content {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .dictionary-card.open .dictionary-content {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+    padding-bottom: var(--space-4);
+  }
+
+  .dictionary-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .dictionary-intro {
+    max-width: 100%;
+    margin-bottom: var(--space-4);
+  }
+
+.chat-game-container {
+    height: 90vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Area Percakapan / Pesan */
+  .chat-body {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .chat-bubble {
+    max-width: 90%;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 12px 14px;
+  }
+
+  /* Area Tombol Opsi Respon */
+  .chat-footer {
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .chip-btn {
+    padding: 11px 14px;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .chat-game-container {
+    max-width: 100%;
+    height: 92vh;
+    border-radius: 20px;
+  }
+  .chat-header {
+    padding: 14px 18px;
+  }
+  .chat-body, .chat-footer {
+    padding: 14px 18px;
+  }
+
+/* ==================================================
+  RESPONSIVE: HP KECIL
+   ================================================== */
+@media (max-width: 420px) {
+  .sila-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .sila-card {
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+
+  .hero-art {
+    min-height: 350px;
+  }
+
+  .orbit-a {
+    width: 310px;
+    height: 310px;
+  }
+
+  .orbit-b {
+    width: 240px;
+    height: 240px;
+  }
+
+  .garuda-svg {
+    width: 100%;
+  }
+
+  .floating-label {
+    display: none;
+  }
+
+  .hero-art { min-height:350px; }
+  .orbit-a { width:310px; height:310px; }
+  .orbit-b { width:240px; height:240px; }
+  .garuda-svg { width:100%; }
+  .floating-label { display:none; }
+
+  .dictionary-trigger strong {
+  font-size: 19px;
+  }
+
+  .dictionary-trigger {
+    min-height: 84px;
+  }
+
+  .dictionary-trigger strong {
+    font-size: 18px;
+  }
+
+  .dictionary-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .dictionary-search {
+    padding: 11px 16px;
+  }
+
+  .chat-game-container {
+    height: 92vh;
+    border-radius: 18px;
+  }
+  .chat-header {
+    padding: var(--space-2);
+  }
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .chat-score-badge {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+  .chat-body {
+    padding: var(--space-2);
+  }
+  .chat-footer {
+    padding: var(--space-2);
+  }
+
+  .chat-game-container {
+    max-width: 100%;
+    height: 92vh;
+    border-radius: 20px;
+  }
+  .chat-header {
+    padding: 14px 18px;
+  }
+  .chat-body, .chat-footer {
+    padding: 14px 18px;
+  }
+}
+
+/* ==================================================
+  SILA 1 CHALLENGE — EDITORIAL ETHICS REDESIGN
+  Scoped to the Campus Chat Mini Game.
+   ================================================== */
+.chat-game-container {
+  --chat-gold-soft: rgba(213, 161, 59, 0.14);
+  --chat-gold-line: rgba(213, 161, 59, 0.46);
+  --chat-navy-soft: rgba(23, 36, 59, 0.06);
+  --chat-radius: 24px;
+  width: min(540px, calc(100vw - 32px));
+  height: min(680px, 88vh);
+  border-radius: var(--chat-radius);
+  border-color: rgba(23, 36, 59, 0.12);
+  box-shadow: 0 30px 80px rgba(23, 36, 59, 0.22);
+}
+
+.chat-header {
+  min-height: 72px;
+  padding: 13px 18px;
+  gap: 14px;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.chat-user-info {
+  min-width: 0;
+  flex: 1;
+  gap: 11px;
+}
+
+.chat-avatar {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(213, 161, 59, 0.08);
+}
+
+.chat-user-info strong {
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.chat-user-info strong::before {
+  content: 'SILA 01  •  MORALITAS & INTEGRITAS';
+  display: block;
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  line-height: 1.2;
+}
+
+.chat-user-info small {
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+.chat-score-badge {
+  flex: 0 0 auto;
+  min-width: 92px;
+  padding: 7px 11px;
+  border-color: var(--chat-gold-line);
+  background: var(--chat-gold-soft);
+  color: #f2d38d;
+  text-align: center;
+  line-height: 1.25;
+  box-shadow: inset 0 0 0 1px rgba(213, 161, 59, 0.05);
+}
+
+.chat-score-badge::first-line {
+  letter-spacing: 0.02em;
+}
+
+.chat-body {
+  padding: 21px;
+  gap: 13px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(213, 161, 59, 0.06), transparent 28%),
+    linear-gradient(180deg, #fffefa 0%, var(--paper) 100%);
+  scrollbar-width: thin;
+}
+
+.chat-bubble {
+  max-width: min(86%, 420px);
+  padding: 13px 15px;
+  border-radius: 18px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  box-shadow: none;
+}
+
+.chat-bubble strong {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.chat-bubble.incoming {
+  border-bottom-left-radius: 5px;
+  border-color: rgba(23, 36, 59, 0.10);
+  box-shadow: 0 5px 18px rgba(23, 36, 59, 0.045);
+}
+
+.chat-bubble.outgoing {
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 7px 20px rgba(23, 36, 59, 0.10);
+}
+
+.chat-feedback {
+  position: relative;
+  margin: 4px 0 2px;
+  padding: 13px 14px 13px 16px;
+  border: 1px solid rgba(213, 161, 59, 0.22);
+  border-left: 3px solid var(--gold);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(213, 161, 59, 0.12), rgba(213, 161, 59, 0.05));
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.6;
+  box-shadow: 0 5px 18px rgba(23, 36, 59, 0.035);
+}
+
+.chat-feedback::before {
+  content: '✦  REFLEKSI';
+  display: block;
+  margin-bottom: 5px;
+  color: #9a6c16;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+}
+
+.chat-game-container.challenge-sila-2 .chat-user-info strong::before {
+  content: 'SILA 02  •  KEMANUSIAAN & KEPEDULIAN';
+}
+
+.chat-footer {
+  padding: 13px 21px 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border-top-color: rgba(23, 36, 59, 0.10);
+  box-shadow: 0 -8px 24px rgba(23, 36, 59, 0.035);
+}
+
+.chip-label {
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+}
+
+.chip-label::before {
+  content: '✦  ';
+  color: var(--gold);
+}
+
+.chip-container {
+  gap: 8px;
+}
+
+.chip-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 42px 11px 45px;
+  border-radius: 14px;
+  border-color: rgba(23, 36, 59, 0.11);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(23, 36, 59, 0.025);
+}
+
+.chip-btn::before {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(213, 161, 59, 0.55);
+  border-radius: 7px;
+  background: rgba(213, 161, 59, 0.08);
+  display: grid;
+  place-items: center;
+  color: #9a6c16;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.chip-btn::after {
+  content: '→';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.chip-btn:hover,
+.chip-btn:focus-visible {
+  background: var(--white);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(23, 36, 59, 0.08);
+  outline: none;
+}
+
+.chip-btn:hover::after,
+.chip-btn:focus-visible::after {
+  color: #9a6c16;
+  transform: translate(2px, -50%);
+}
+
+.next-btn {
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: var(--navy);
+  box-shadow: 0 7px 18px rgba(23, 36, 59, 0.12);
+}
+
+.next-btn:hover,
+.next-btn:focus-visible {
+  background: #263b60;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(23, 36, 59, 0.16);
+  outline: none;
+}
+
+/* =========================================
+   SILA 3 — FACT-CHECK RADAR
+   ========================================= */
+
+/* Label kuning di header mini game */
+#chatGameModalBackdrop
+.challenge-sila-3 .chat-user-info strong::before {
+  content: "SILA 03 • PERSATUAN INDONESIA";
+}
+
+/* Kartu feed berita */
+#chatGameModalBackdrop .news-feed-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  overflow-wrap: anywhere;
+}
+
+/* Identitas akun */
+#chatGameModalBackdrop .news-feed-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+#chatGameModalBackdrop .news-feed-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #eaf1ff;
+  font-size: 20px;
+}
+
+#chatGameModalBackdrop .news-feed-author strong,
+#chatGameModalBackdrop .news-feed-author small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+#chatGameModalBackdrop .news-feed-author strong {
+  color: #172554;
+  font-size: 13px;
+}
+
+#chatGameModalBackdrop .news-feed-author small {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* Status postingan */
+#chatGameModalBackdrop .news-feed-status {
+  display: inline-block;
+  padding: 5px 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background: #fff1f2;
+  color: #be123c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+/* Judul berita */
+#chatGameModalBackdrop .news-feed-headline {
+  margin: 0 0 12px;
+  color: #172033;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Area gambar ilustrasi */
+#chatGameModalBackdrop .news-media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 18px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #475569;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Indikator tingkat kepercayaan */
+#chatGameModalBackdrop .trust-meter {
+  padding: 11px;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+#chatGameModalBackdrop .trust-meter-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #475569;
+  font-size: 10px;
+}
+
+#chatGameModalBackdrop .trust-meter-label strong {
+  color: #b45309;
+  text-align: right;
+}
+
+#chatGameModalBackdrop .trust-meter-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e2e8f0;
+}
+
+#chatGameModalBackdrop .trust-meter-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: #d5a13b;
+  transition: width 0.3s ease;
+}
+
+/* Panel investigasi */
+#chatGameModalBackdrop .fact-check-panel {
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid #f0c66b;
+  border-radius: 12px;
+  background: #fff8e7;
+  color: #493716;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+#chatGameModalBackdrop .fact-check-panel[hidden] {
+  display: none;
+}
+
+#chatGameModalBackdrop .fact-check-panel ul {
+  padding-left: 19px;
+  margin: 10px 0;
+}
+
+#chatGameModalBackdrop .fact-check-panel li {
+  margin-bottom: 7px;
+  overflow-wrap: anywhere;
+}
+
+#chatGameModalBackdrop .fact-check-panel p {
+  margin: 8px 0 0;
+}
+
+/* Tiga tombol aksi */
+#chatGameModalBackdrop .fact-action-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+#chatGameModalBackdrop .fact-action-btn {
+  min-width: 0;
+  padding: 11px 5px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: background 0.2s ease;
+}
+
+#chatGameModalBackdrop .fact-action-btn.check {
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+#chatGameModalBackdrop .fact-action-btn.report {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+#chatGameModalBackdrop .fact-action-btn.share {
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+#chatGameModalBackdrop .fact-action-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+#chatGameModalBackdrop .fact-action-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Umpan balik keputusan */
+#chatGameModalBackdrop .fact-feedback {
+  padding: 13px;
+  margin-top: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+#chatGameModalBackdrop .fact-feedback p {
+  margin: 6px 0 0;
+}
+
+#chatGameModalBackdrop .fact-feedback.success {
+  border: 1px solid #86efac;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+#chatGameModalBackdrop .fact-feedback.warning {
+  border: 1px solid #fcd34d;
+  background: #fffbeb;
+  color: #92400e;
+}
+
+/* Hasil akhir */
+#chatGameModalBackdrop .fact-final-result {
+  padding: 25px 15px;
+  text-align: center;
+}
+
+#chatGameModalBackdrop .fact-final-icon {
+  font-size: 42px;
+}
+
+#chatGameModalBackdrop .fact-final-result h3 {
+  color: #172554;
+  font-size: 19px;
+}
+
+#chatGameModalBackdrop .fact-final-score {
+  margin: 15px 0;
+  color: #b88624;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+#chatGameModalBackdrop .fact-final-result p {
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.challenge-sila-3 .simulated-post-top {
+    padding: 12px;
+  }
+
+  .challenge-sila-3 .simulated-post-content {
+    padding: 4px 13px 14px;
+  }
+
+  .challenge-sila-3 .simulated-post-content h4 {
+    font-size: 16px;
+  }
+
+  .challenge-sila-3 .simulated-post-content p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .challenge-sila-3 .simulated-post-stats {
+    font-size: 11px;
+  }
+
+/* =========================================
+   SILA 4 — DIGITAL TOWN HALL MODERATOR
+   ========================================= */
+
+/* Identitas Sila 4 pada header modal */
+#chatGameModalBackdrop
+.chat-game-container.challenge-sila-4
+.chat-user-info strong::before {
+  content: "SILA 04 • MUSYAWARAH & MUFAKAT";
+}
+
+/* Topik diskusi */
+#chatGameModalBackdrop .townhall-topic {
+  padding: 15px;
+  margin-bottom: 12px;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+#chatGameModalBackdrop .townhall-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: #a87919;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+
+#chatGameModalBackdrop .townhall-topic h3 {
+  margin: 0 0 9px;
+  color: #172b4d;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+#chatGameModalBackdrop .townhall-topic p {
+  margin: 0 0 6px;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#chatGameModalBackdrop .townhall-topic small {
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Kartu komentar */
+#chatGameModalBackdrop .townhall-comment {
+  padding: 15px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .04);
+  overflow-wrap: anywhere;
+}
+
+#chatGameModalBackdrop .townhall-comment-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#chatGameModalBackdrop .townhall-comment-avatar {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #eaf0fa;
+  font-size: 20px;
+}
+
+#chatGameModalBackdrop .townhall-comment-author strong,
+#chatGameModalBackdrop .townhall-comment-author small {
+  display: block;
+}
+
+#chatGameModalBackdrop .townhall-comment-author strong {
+  color: #172b4d;
+  font-size: 13px;
+}
+
+#chatGameModalBackdrop .townhall-comment-author small {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+#chatGameModalBackdrop .townhall-comment > p {
+  margin: 0;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+/* Consensus Meter */
+#chatGameModalBackdrop .consensus-card {
+  padding: 13px;
+  margin-bottom: 14px;
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+#chatGameModalBackdrop .consensus-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#chatGameModalBackdrop .consensus-heading strong {
+  color: #172b4d;
+  font-size: 12px;
+}
+
+#chatGameModalBackdrop .consensus-heading small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+#chatGameModalBackdrop .consensus-heading .consensus-number {
+  color: #a87919;
+  font-size: 21px;
+}
+
+#chatGameModalBackdrop .consensus-track {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e2e8f0;
+}
+
+#chatGameModalBackdrop .consensus-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d4a23d, #278765);
+  transition: width .35s ease;
+}
+
+#chatGameModalBackdrop .consensus-status {
+  margin-top: 7px;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Petunjuk dan pilihan */
+#chatGameModalBackdrop .townhall-instruction {
+  margin: 12px 0;
+  color: #172b4d;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+#chatGameModalBackdrop .townhall-choice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+#chatGameModalBackdrop .townhall-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #dbe4f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #172b4d;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+
+#chatGameModalBackdrop .townhall-btn small {
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+#chatGameModalBackdrop .townhall-btn:hover {
+  background: #f8fafc;
+  border-color: #a87919;
+}
+
+#chatGameModalBackdrop .townhall-btn.pin {
+  border-left: 4px solid #278765;
+}
+
+#chatGameModalBackdrop .townhall-btn.mediate {
+  border-left: 4px solid #d4a23d;
+}
+
+#chatGameModalBackdrop .townhall-btn.hide {
+  border-left: 4px solid #dc6262;
+}
+
+/* Rangkuman sebelum mufakat */
+#chatGameModalBackdrop .townhall-summary {
+  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid #e6d7b5;
+  border-radius: 12px;
+  background: #fffaf0;
+  color: #493716;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+#chatGameModalBackdrop .townhall-summary ul {
+  padding-left: 18px;
+  margin: 10px 0 0;
+}
+
+#chatGameModalBackdrop .townhall-summary li {
+  margin-bottom: 5px;
+}
+
+/* Pilihan solusi */
+#chatGameModalBackdrop .townhall-solution-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+#chatGameModalBackdrop .townhall-solution-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #dbe4f0;
+  border-radius: 11px;
+  background: #fff;
+  color: #334155;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.65;
+  text-align: left;
+  cursor: pointer;
+}
+
+#chatGameModalBackdrop .townhall-solution-btn:hover {
+  border-color: #b58b35;
+  background: #fffaf0;
+}
+
+#chatGameModalBackdrop .townhall-solution-number {
+  display: grid;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: #19375f;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Hasil skenario dan hasil akhir */
+#chatGameModalBackdrop .townhall-result {
+  padding: 22px 12px;
+  text-align: center;
+}
+
+#chatGameModalBackdrop .townhall-result-icon {
+  margin-bottom: 10px;
+  font-size: 42px;
+}
+
+#chatGameModalBackdrop .townhall-result h3 {
+  color: #19375f;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+#chatGameModalBackdrop .townhall-result > p {
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+#chatGameModalBackdrop .townhall-result-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+#chatGameModalBackdrop .townhall-result-stats > div {
+  padding: 12px 6px;
+  border: 1px solid #dbe4f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+#chatGameModalBackdrop .townhall-result-stats small,
+#chatGameModalBackdrop .townhall-result-stats strong {
+  display: block;
+}
+
+#chatGameModalBackdrop .townhall-result-stats small {
+  color: #64748b;
+  font-size: 10px;
+}
+
+#chatGameModalBackdrop .townhall-result-stats strong {
+  margin-top: 6px;
+  color: #a87919;
+  font-size: 21px;
+}
+
+#chatGameModalBackdrop .townhall-result .townhall-reflection {
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  text-align: left;
+}
+
+#chatGameModalBackdrop .townhall-final-score {
+  margin: 12px 0;
+  color: #a87919;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+/* ==========================================
+   SILA 5 — DIGITAL EQUITY LAB
+========================================== */
+
+.challenge-sila-5 .equity-dashboard,
+.challenge-sila-5 .equity-case,
+.challenge-sila-5 .equity-feedback,
+.challenge-sila-5 .equity-final {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid rgba(213, 161, 59, 0.25);
+  border-radius: 16px;
+  background: #ffffff;
+  color: #243047;
+}
+
+.challenge-sila-5 .equity-dashboard {
+  background: #f8fafc;
+}
+
+.challenge-sila-5 .equity-dashboard-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.challenge-sila-5 .equity-dashboard-heading small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.challenge-sila-5 .equity-meter {
+  margin-top: 14px;
+}
+
+.challenge-sila-5 .equity-meter-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 12px;
+}
+
+.challenge-sila-5 .equity-meter-label strong {
+  color: #1e293b;
+  white-space: nowrap;
+}
+
+.challenge-sila-5 .equity-meter-track {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.challenge-sila-5 .equity-meter-fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+.challenge-sila-5 .equity-creator {
+  background: #d5a13b;
+}
+
+.challenge-sila-5 .equity-access {
+  background: #3b82f6;
+}
+
+.challenge-sila-5 .equity-fairness {
+  background: #16a085;
+}
+
+.challenge-sila-5 .equity-case-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 14px;
+}
+
+.challenge-sila-5 .equity-case-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #fff7e6;
+  font-size: 25px;
+}
+
+.challenge-sila-5 .equity-case-category {
+  display: block;
+  margin-bottom: 6px;
+  color: #a87919;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.challenge-sila-5 .equity-case h3,
+.challenge-sila-5 .equity-feedback h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.challenge-sila-5 .equity-case > p,
+.challenge-sila-5 .equity-feedback > p {
+  margin: 12px 0 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.challenge-sila-5 .equity-question {
+  margin-top: 16px;
+  padding: 12px;
+  border-left: 3px solid #d5a13b;
+  border-radius: 7px;
+  background: #fffbeb;
+  color: #674f1d;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.challenge-sila-5 .equity-stage-label {
+  margin: 18px 0 10px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.challenge-sila-5 .equity-choice-list {
+  display: grid;
+  gap: 10px;
+}
+
+.challenge-sila-5 .equity-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #243047;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.challenge-sila-5 .equity-choice:hover {
+  border-color: #d5a13b;
+  background: #fffbeb;
+  transform: translateY(-1px);
+}
+
+.challenge-sila-5 .equity-choice:focus-visible {
+  outline: 3px solid rgba(213, 161, 59, 0.35);
+  outline-offset: 2px;
+}
+
+.challenge-sila-5 .equity-choice-number {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.challenge-sila-5 .equity-choice-content {
+  display: grid;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+}
+
+.challenge-sila-5 .equity-choice-content strong {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.challenge-sila-5 .equity-choice-content small {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.challenge-sila-5 .equity-choice-arrow {
+  align-self: center;
+  color: #b8892d;
+  font-size: 20px;
+}
+
+.challenge-sila-5 .equity-feedback-icon,
+.challenge-sila-5 .equity-final-icon {
+  margin-bottom: 12px;
+  font-size: 34px;
+}
+
+.challenge-sila-5 .equity-impact-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.challenge-sila-5 .equity-impact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 12px;
+}
+
+.challenge-sila-5 .impact-positive {
+  color: #0f8a62;
+}
+
+.challenge-sila-5 .impact-negative {
+  color: #dc3545;
+}
+
+.challenge-sila-5 .equity-reflection {
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 11px !important;
+}
+
+.challenge-sila-5 .equity-final {
+  text-align: center;
+}
+
+.challenge-sila-5 .equity-final h2 {
+  margin: 8px 0;
+  color: #1e293b;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.challenge-sila-5 .equity-final-score {
+  margin: 12px 0 0;
+  color: #b8892d;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.challenge-sila-5 .equity-final-score-label {
+  margin: 0 0 18px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.challenge-sila-5 .equity-final > p:not(.equity-final-score-label) {
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.challenge-sila-5 .equity-lessons {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #fffbeb;
+  color: #674f1d;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.challenge-sila-5 .equity-lessons ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 720px) {
+  .chat-game-container {
+    width: min(560px, calc(100vw - 24px));
+    height: 90vh;
+    border-radius: 21px;
+  }
+
+  .chat-header {
+    padding: 12px 14px;
+  }
+
+  .chat-body {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .chat-footer {
+    padding: 12px 16px 16px;
+  }
+
+  .chat-bubble {
+    max-width: 91%;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .chat-game-container {
+    width: calc(100vw - 32px);
+    height: 92vh;
+    border-radius: 18px;
+  }
+
+  .chat-header {
+    min-height: 64px;
+    padding: 10px 11px;
+    gap: 8px;
+  }
+
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    font-size: 16px;
+  }
+
+  .chat-user-info strong::before {
+    font-size: 8px;
+    letter-spacing: 0.07em;
+  }
+
+  .chat-user-info strong {
+    font-size: 13px;
+  }
+
+  .chat-user-info small {
+    font-size: 9px;
+  }
+
+  .chat-score-badge {
+    min-width: 74px;
+    padding: 6px 7px;
+    font-size: 9px;
+  }
+
+  .chat-body {
+    padding: 13px 11px;
+    gap: 10px;
+  }
+
+  .chat-bubble {
+    max-width: 94%;
+    padding: 11px 12px;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .chat-feedback {
+    padding: 11px 12px 11px 14px;
+    font-size: 11.5px;
+  }
+
+  .chat-footer {
+    padding: 11px 11px 13px;
+  }
+
+  .chip-btn {
+    min-height: 48px;
+    padding: 10px 36px 10px 43px;
+    font-size: 12px;
+    border-radius: 13px;
+  }
+
+  .chip-btn::before {
+    left: 12px;
+    width: 21px;
+    height: 21px;
+  }
+
+  .chip-btn::after {
+    right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-game-container,
+  .chat-bubble,
+  .chat-feedback,
+  .chip-btn,
+  .chip-btn::after,
+  .next-btn {
+    animation: none;
+    transition: none;
+  }
+}
+
+
+/* ==================================================
+   GAME MODAL — FINAL RESPONSIVE OVERRIDES
+   These rules intentionally sit at the end of the file
+   to override older duplicate .chat-game-container rules.
+   ================================================== */
+
+#chatGameModalBackdrop {
+  box-sizing: border-box;
+  padding: 21px;
+}
+
+#chatGameModalBackdrop .chat-game-container {
+  box-sizing: border-box;
+  width: min(540px, calc(100vw - 64px));
+  height: min(680px, 88vh);
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+#chatGameModalBackdrop .chat-header {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+#chatGameModalBackdrop .chat-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+#chatGameModalBackdrop .chat-footer {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/* Isi toolbox Sila 2 tidak boleh memperlebar modal. */
+#chatGameModalBackdrop .challenge-sila-2 .scenario-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  flex-shrink: 0;
+  overflow-wrap: anywhere;
+}
+
+#chatGameModalBackdrop .challenge-sila-2 .toolbox-grid {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+#chatGameModalBackdrop .challenge-sila-2 .toolbox-item {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  align-items: flex-start;
+}
+
+#chatGameModalBackdrop .challenge-sila-2 .tool-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+#chatGameModalBackdrop .challenge-sila-2 .tool-checkbox {
+  flex: 0 0 auto;
+  margin-top: 2px !important;
+}
+
+/* Tablet dan ponsel */
+@media (max-width: 720px) {
+  #chatGameModalBackdrop {
+    padding: 16px;
+  }
+
+  #chatGameModalBackdrop .chat-game-container {
+    width: 100%;
+    height: min(680px, 90vh);
+    border-radius: 21px;
+  }
+}
+
+/* Ponsel kecil: jarak minimal 12px dari tepi layar. */
+@media (max-width: 420px) {
+  #chatGameModalBackdrop {
+    padding: 12px;
+  }
+
+  #chatGameModalBackdrop .chat-game-container {
+    width: 100%;
+    height: 92vh;
+    max-height: 92vh;
+    border-radius: 18px;
+  }
+
+  #chatGameModalBackdrop .challenge-sila-2 .toolbox-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  #chatGameModalBackdrop .challenge-sila-2 .tool-label {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  #chatGameModalBackdrop .news-feed-card {
+    padding: 12px;
+  }
+
+  #chatGameModalBackdrop .news-feed-headline {
+    font-size: 14px;
+  }
+
+  #chatGameModalBackdrop .fact-action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  #chatGameModalBackdrop .fact-action-btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  #chatGameModalBackdrop .trust-meter-label {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .challenge-sila-5 .equity-dashboard,
+  .challenge-sila-5 .equity-case,
+  .challenge-sila-5 .equity-feedback,
+  .challenge-sila-5 .equity-final {
+    padding: 13px;
+    border-radius: 12px;
+  }
+
+  .challenge-sila-5 .equity-dashboard-heading {
+    align-items: flex-start;
+    font-size: 10px;
+  }
+
+  .challenge-sila-5 .equity-case h3,
+  .challenge-sila-5 .equity-feedback h3 {
+    font-size: 15px;
+  }
+
+  .challenge-sila-5 .equity-choice {
+    gap: 9px;
+    padding: 11px;
+  }
+
+  .challenge-sila-5 .equity-choice-content strong {
+    font-size: 12px;
+  }
+
+  .challenge-sila-5 .equity-choice-content small {
+    font-size: 11px;
+  }
+
+  .challenge-sila-5 .equity-final-score {
+    font-size: 36px;
+  }
+}
+
+
+
+/* ==========================================================
+   MINI GAME — FIX RESPONSIF HP UNTUK SEMUA SILA
+   Gunakan dynamic viewport agar modal mengikuti tinggi area
+   layar yang benar pada browser ponsel, termasuk address bar.
+   ========================================================== */
+#chatGameModalBackdrop {
+  box-sizing: border-box;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+#chatGameModalBackdrop.open,
+#chatGameModalBackdrop.active {
+  display: flex;
+}
+
+#chatGameModalBackdrop .chat-game-container {
+  box-sizing: border-box;
+  width: min(540px, calc(100vw - 24px));
+  height: min(680px, calc(100vh - 24px));
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  min-height: 0;
+  flex: 0 1 auto;
+  margin: auto;
+}
+
+/* Dynamic viewport lebih akurat pada browser HP modern. */
+@supports (height: 100dvh) {
+  #chatGameModalBackdrop .chat-game-container {
+    height: min(680px, calc(100dvh - 24px));
+    max-height: calc(100dvh - 24px);
+  }
+}
+
+@media (max-width: 720px) {
+  #chatGameModalBackdrop {
+    padding: 10px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  #chatGameModalBackdrop .chat-game-container {
+    width: 100%;
+    max-width: 540px;
+    height: calc(100vh - 20px);
+    max-height: calc(100vh - 20px);
+    border-radius: 20px;
+  }
+
+  @supports (height: 100dvh) {
+    #chatGameModalBackdrop .chat-game-container {
+      height: calc(100dvh - max(20px, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 20px));
+      max-height: calc(100dvh - max(20px, env(safe-area-inset-top) + env(safe-area-inset-bottom) + 20px));
+    }
+  }
+
+  /* Header/footer tetap terlihat; konten panjang bergulir di area tengah. */
+  #chatGameModalBackdrop .chat-header,
+  #chatGameModalBackdrop .chat-footer {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  #chatGameModalBackdrop .chat-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 420px) {
+  #chatGameModalBackdrop {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #chatGameModalBackdrop .chat-game-container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 18px;
+  }
+}

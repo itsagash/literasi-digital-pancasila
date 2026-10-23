@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Literasi Pancasila — Ruang Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOPBAR / NAVIGASI -->
+  <header class="topbar">
+    <a class="brand" href="#" data-action="home" aria-label="Beranda">
+      <span>
+        <strong>Literasi Pancasila</strong>
+        <small>Ruang Digital Berkarakter</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="navMenu" aria-label="Navigasi utama">
+      <button class="nav-link active" data-action="home">
+        Beranda
+      </button>
+
+      <button class="nav-link" data-action="explore">
+        Jelajah Sila
+      </button>
+
+      <button class="nav-link" data-action="kamus">
+        Kamus Digital
+      </button>
+
+      <button class="nav-link" data-action="about">
+        Tentang
+      </button>
+    </nav>
+
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka navigasi">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- KONTEN UTAMA -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> INTERACTIVE LEARNING EXPERIENCE</div>
+        <h1>Jelajahi Pancasila<br><em>di Ruang Digital.</em></h1>
+        <p class="lead">
+          Temukan bagaimana lima sila dapat menjadi panduan untuk berkomunikasi,
+          berbagi informasi, dan berinteraksi secara bijak di dunia digital.
+        </p>
+        <div class="hero-actions">
+          <button class="primary-btn" id="startExplore">Mulai Eksplorasi <span>↓</span></button>
+        </div>
+        <div class="micro-note">
+          <span>✦</span> Klik salah satu kartu sila di bawah untuk mulai menjelajah.
+        </div>
+      </div>
+
+      <div class="hero-art" id="garudaArea" style="cursor: pointer;">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="glow"></div>
+
+        <svg class="garuda-svg" viewBox="0 0 620 620" role="img" aria-label="Garuda Pancasila">
+          <image href="Garuda Pancasila Logo - Colored - zonalogo.com.svg" x="60" y="60" width="500" height="500" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- EXPLORE SECTION -->
+    <section class="explore-section" id="explore">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow"><span></span> JELAJAHI LIMA SILA</div>
+          <h2>Satu nilai, satu kebiasaan digital.</h2>
+        </div>
+        <p>Setiap sila membawa tantangan yang berbeda. Klik kartu untuk melihat makna dan contoh penerapannya.</p>
+      </div>
+
+      <div class="sila-cards">
+        <button class="sila-card card-1" data-sila="1">
+          <span class="card-number">01</span>
+          <span class="card-icon"><img src="Pancasila_Sila_1_Star_512x512.svg" alt="Bintang Sila 1" class="icon-img"></span>
+          <strong>Ketuhanan Yang Maha Esa</strong>
+          <small>Moralitas & Integritas</small>
+          <i>→</i>
+        </button>
+
+        <button class="sila-card card-2" data-sila="2">
+          <span class="card-number">02</span>
+          <span class="card-icon"><img src="Pancasila_Sila_2_Chain_512x512.svg" alt="Rantai Sila 2" class="icon-img"></span>
+          <strong>Kemanusiaan Yang Adil dan Beradab</strong>
+          <small>Etika Digital</small>
+          <i>→</i>
+        </button>
+
+        <button class="sila-card card-3" data-sila="3">
+          <span class="card-number">03</span>
+          <span class="card-icon"><img src="Pancasila_Sila_3_Banyan_Tree_512x512.svg" alt="Pohon Beringin Sila 3" class="icon-img"></span>
+          <strong>Persatuan Indonesia</strong>
+          <small>Saring Sebelum Sharing</small>
+          <i>→</i>
+        </button>
+
+        <button class="sila-card card-4" data-sila="4">
+          <span class="card-number">04</span>
+          <span class="card-icon"><img src="Pancasila_Sila_4_Buffalos_Head_512x512.svg" alt="Kepala Banteng Sila 4" class="icon-img"></span>
+          <strong>Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan</strong>
+          <small>Menghargai Perbedaan Pendapat</small>
+          <i>→</i>
+        </button>
+
+        <button class="sila-card card-5" data-sila="5">
+          <span class="card-number">05</span>
+          <span class="card-icon"><img src="Pancasila_Sila_5_Rice_and_Cotton_512x512.svg" alt="Padi Kapas Sila 5" class="icon-img"></span>
+          <strong>Keadilan Sosial bagi Seluruh Rakyat Indonesia</strong>
+          <small>Akses Informasi yang Adil</small>
+          <i>→</i>
+        </button>
+      </div>
+    </section>
+
+    <section class="dictionary-section" id="kamus">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow"><span></span> KAMUS ETIKA DIGITAL</div>
+          <h2>Kenali istilah, pahami risikonya.</h2>
+        </div>
+        <p>Kenali istilah yang sering muncul di ruang digital dan pahami bagaimana nilai Pancasila dapat menjadi panduan untuk menghadapinya.</p>
+      </div>
+
+        <div class="dictionary-intro">
+          <div class="dictionary-search">
+            <span>🔎</span>
+            <input
+              type="search"
+              id="dictionarySearch"
+              placeholder="Cari istilah..."
+              aria-label="Cari istilah dalam Kamus Etika Digital">
+          </div>
+        </div>
+      </div>
+
+      <div class="dictionary-grid" id="dictionaryGrid">
+
+      <!-- CYBERBULLYING -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 01</small>
+          <strong>Cyberbullying</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Perundungan yang dilakukan melalui media atau platform digital,
+          seperti komentar, pesan, atau unggahan yang bertujuan menyakiti
+          atau merendahkan orang lain.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 2 — Kemanusiaan yang Adil dan Beradab</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Gunakan bahasa yang santun.</li>
+            <li>Jangan ikut menyebarkan penghinaan.</li>
+            <li>Kritik perilaku atau gagasan tanpa menyerang pribadi.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- DOXXING -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 02</small>
+          <strong>Doxxing</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Tindakan menyebarkan informasi pribadi seseorang di internet
+          tanpa persetujuan, seperti alamat, nomor telepon, atau data
+          pribadi lainnya.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 2 — Kemanusiaan yang Adil dan Beradab</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Jangan menyebarkan data pribadi orang lain.</li>
+            <li>Hormati privasi pengguna lain.</li>
+            <li>Pikirkan dampak sebelum membagikan informasi.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ECHO CHAMBER -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 03</small>
+          <strong>Echo Chamber</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Kondisi ketika seseorang lebih sering menerima informasi dan
+          pendapat yang sesuai dengan pandangannya sendiri sehingga
+          sudut pandang lain jarang ditemui.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 4 — Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Dengarkan sudut pandang yang berbeda.</li>
+            <li>Bandingkan berbagai sumber informasi.</li>
+            <li>Hindari menganggap pendapat sendiri selalu paling benar.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- HOAX -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 04</small>
+          <strong>Hoax</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Informasi palsu atau menyesatkan yang disebarkan seolah-olah
+          merupakan informasi yang benar.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 3 — Persatuan Indonesia</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Periksa sumber informasi.</li>
+            <li>Periksa tanggal dan konteks berita.</li>
+            <li>Bandingkan dengan sumber tepercaya.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- HATE SPEECH -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 05</small>
+          <strong>Hate Speech</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Ucapan atau konten yang menyerang, merendahkan, atau mendorong
+          kebencian terhadap seseorang atau kelompok tertentu.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 2 — Kemanusiaan yang Adil dan Beradab</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Hindari penghinaan terhadap kelompok lain.</li>
+            <li>Gunakan bahasa yang menghargai sesama.</li>
+            <li>Jangan memperkuat konten yang memecah belah.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- FOMO -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 06</small>
+          <strong>FOMO (Fear of Missing Out)</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Perasaan cemas atau takut tertinggal tren, informasi, atau momen menyenangkan yang sedang dialami orang lain di media sosial.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 1 — Ketuhanan Yang Maha Esa</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Fokus dan bersyukur atas kehidupan pribadi saat ini.</li>
+            <li>Batasi durasi penggunaan media sosial (screen time).</li>
+            <li>Sadar bahwa media sosial umumnya hanya menampilkan momen terbaik seseorang.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- DIGITAL PRIRACY -->
+    <article class="dictionary-card">
+      <button class="dictionary-trigger" type="button">
+        <span>
+          <small>ISTILAH 07</small>
+          <strong>Digital Piracy</strong>
+        </span>
+
+        <span class="dictionary-icon">+</span>
+      </button>
+
+      <div class="dictionary-content">
+        <p>
+          Tindakan mengunduh, menggandakan, menyebarkan, atau memperjualbelikan karya digital (seperti musik, film, aplikasi, atau buku) tanpa izin resmi dari pemilik hak cipta.
+        </p>
+
+        <div class="dictionary-pancasila">
+          <small>KAITAN DENGAN PANCASILA</small>
+          <strong>Sila 5 — Keadilan Sosial bagi Seluruh Rakyat Indonesia</strong>
+        </div>
+
+        <div class="dictionary-action">
+          <strong>Cara menghindarinya</strong>
+          <ul>
+            <li>Gunakan aplikasi, musik, dan media yang resmi.</li>
+            <li>Hargai karya dan hak cipta kreator lokal maupun global.</li>
+            <li>Biasakan mencantumkan sumber jika menggunakan karya orang lain.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="dictionary-empty" id="dictionaryEmpty">
+    Istilah yang Anda cari belum ditemukan.
+  </div>
+
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+      <div class="about-box">
+        <div>
+          <div class="eyebrow"><span></span> TENTANG PROYEK</div>
+          <h2>Pancasila bukan hanya untuk dihafalkan.</h2>
+        </div>
+        <p>
+          Kenali nilai-nilai Pancasila, pahami penerapannya di ruang digital, dan jadilah pengguna teknologi yang bijak, beretika, serta bertanggung jawab.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- POP-UP MODAL FILOSOFI GARUDA PANCASILA -->
+  <div class="modal-backdrop" id="garudaModalBackdrop" aria-hidden="true">
+    <article class="info-modal garuda-modal" id="garudaModal" role="dialog" aria-modal="true" aria-labelledby="garudaModalTitle">
+      <button class="close-btn" id="closeGarudaModal" aria-label="Tutup">×</button>
+      
+      <div class="modal-visual garuda-visual">
+        <img src="Garuda Pancasila Logo - Colored - zonalogo.com.svg" alt="Garuda Pancasila" class="modal-icon-img garuda-large-img">
+      </div>
+
+      <div class="modal-content">
+        <div class="modal-kicker">FILOSOFI & LAMBANG</div>
+        <h2 id="garudaModalTitle">Garuda Pancasila</h2>
+        <h3 id="garudaModalSubtitle">Simbol Kedaulatan & Persatuan di Ruang Digital</h3>
+        <p>
+          Burung Garuda melambangkan keagungan dan keperkasaan Bangsa Indonesia. Di era digital, lambang ini mengingatkan kita untuk tetap menjaga identitas bangsa saat berinteraksi di dunia maya.
+        </p>
+
+        <div class="example-box garuda-info-box">
+          <strong>Makna Simbolis Utama:</strong>
+          <ul>
+            <li><strong>17-8-19-45 (Jumlah Bulu):</strong> 17 helai bulu di setiap sayap, 8 di ekor, 19 di bawah perisai/pangkal ekor, dan 45 di leher melambangkan hari Kemerdekaan Indonesia.</li>
+            <li><strong>Pita Bhinneka Tunggal Ika:</strong> "Berbeda-beda tetapi tetap satu jua". Pengingat untuk saling menghargai perbedaan pendapat di kolom komentar dan ruang diskusi online.</li>
+            <li><strong>Perisai di Dada:</strong> Jantung pertahanan yang memuat simbol dari 5 sila Pancasila sebagai panduan etika berinternet.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- 1. SISIPKAN MODAL MINI GAME DI SINI -->
+  <div class="modal-backdrop" id="chatGameModalBackdrop" aria-hidden="true">
+    <div class="chat-game-container">
+      <div class="chat-header">
+        <div class="chat-user-info">
+          <div class="chat-avatar" id="gameAvatar">🎓</div>
+          <div>
+            <strong id="gameHeaderTitle">Grup Chat Kampus</strong>
+            <small id="chatScenarioTitle">Skenario 1 dari 3</small>
+          </div>
+        </div>
+        <div class="chat-score-badge">
+          <span id="scoreLabel">Integritas</span>: <span id="chatScore">100</span>%
+        </div>
+        <button class="close-btn" id="closeChatGameModal" aria-label="Tutup" style="position: static;">×</button>
+      </div>
+
+      <!-- Area Konten Dinamis (Chat Body / Kotak P3K) -->
+      <div class="chat-body" id="chatBody"></div>
+
+      <!-- Area Footer Dinamis (Otomatis menyesuaikan Sila 1 atau Sila 2) -->
+      <div class="chat-footer" id="gameFooter"></div>
+    </div>
+  </div>
+
+  <!-- POP-UP MODAL PENJELASAN SILA -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <article class="info-modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-btn" id="closeModal" aria-label="Tutup">×</button>
+      <div class="modal-visual" id="modalVisual">
+        <img src="Pancasila_Sila_1_Star_512x512.svg" alt="Bintang Sila 1" class="modal-icon-img">
+      </div>
+      <div class="modal-content">
+        <div class="modal-kicker" id="modalKicker">SILA 01</div>
+        <h2 id="modalTitle"></h2>
+        <h3 id="modalSubtitle"></h3>
+        <p id="modalDescription"></p>
+        <div class="example-box">
+          <strong>Dalam kehidupan digital</strong>
+          <ul id="modalExamples"></ul>
+        </div>
+        <button class="primary-btn full" id="gameBtn">Coba Tantangannya <span>→</span></button>
+      </div>
+    </article>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Literasi Pancasila</span>
+    <span>Belajar • Berpikir • Berinteraksi</span>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="js/app.js"></script>
+</body>
+</html>
