@@ -1077,12 +1077,22 @@ function evaluateSila2Answer(scenario, selectedIds) {
   }
 
   // Tampilkan kotak umpan balik di chat body
-  chatBody.innerHTML += `
-    <div class="chat-feedback mt-3 p-3 rounded-3 border bg-light shadow-xs">
-      ${reflectionHTML}
-    </div>
-  `;
-  chatBody.scrollTop = chatBody.scrollHeight;
+  chatBody.innerHTML = `
+      <div class="scenario-card p-3 mb-2 rounded-3 border bg-light shadow-xs">
+        <h6 class="fw-bold text-dark mb-1" style="font-size: 13px;">
+          📌 Situasi Krisis:
+        </h6>
+        <p class="mb-0 text-secondary" style="font-size: 13px; line-height: 1.5;">
+          ${scenario.caseDescription}
+        </p>
+      </div>
+
+      <div class="chat-feedback mt-3 p-3 rounded-3 border bg-light shadow-xs">
+        ${reflectionHTML}
+      </div>
+    `;
+
+    chatBody.scrollTop = 0;
 
   // Ganti tombol footer menjadi tombol Lanjut Skenario
   gameFooter.innerHTML = `
