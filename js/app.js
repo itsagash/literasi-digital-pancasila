@@ -944,10 +944,10 @@ function showSila1FinalResult() {
   const gameFooter = document.getElementById('gameFooter');
 
   chatBody.innerHTML = `
-    <section class="fact-final-result" style="text-align: center; padding: 20px;">
+    <section class="fact-final-result" style="text-align: center; padding: 25px 20px;">
       <div class="fact-final-icon" style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
       <h3 style="font-size: 1.25rem; font-weight: bold; color: #1e293b; margin-bottom: 5px;">Uji Integritas Selesai!</h3>
-      <div class="fact-final-score" style="font-size: 2.5rem; font-weight: bold; color: #2563eb; margin: 10px 0;">${finalScore}%</div>
+      <div class="fact-final-score" style="font-size: 2.5rem; font-weight: bold; color: #d5a13b; margin: 10px 0;">${finalScore}%</div>
       <p style="color: #475569; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
         ${finalScore >= 85 
           ? 'Luar biasa! Kamu menunjukkan integritas moral dan rasa saling menghargai yang tinggi di ruang digital.' 
@@ -1125,12 +1125,12 @@ function showSila2FinalResult() {
   const gameFooter = document.getElementById('gameFooter');
 
   chatBody.innerHTML = `
-    <section class="fact-final-result" style="text-align: center; padding: 20px;">
+    <section class="fact-final-result" style="text-align: center; padding: 25px 20px;">
       <div class="fact-final-icon" style="font-size: 3rem; margin-bottom: 10px;">🤝</div>
       <h3 style="font-size: 1.25rem; font-weight: bold; color: #1e293b; margin-bottom: 5px;">Simulasi P3K Selesai!</h3>
-      <div class="fact-final-score" style="font-size: 2.5rem; font-weight: bold; color: #2563eb; margin: 10px 0;">${finalScore}%</div>
+      <div class="fact-final-score" style="font-size: 2.5rem; font-weight: bold; color: #d5a13b; margin: 10px 0;">${finalScore}%</div>
       <p style="color: #475569; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
-        ${finalScore >= 75 
+        ${finalSentScore = finalScore >= 75 
           ? 'Luar biasa! Anda memiliki kepekaan sosial, empati mendalam, dan menjunjung tinggi martabat manusia.' 
           : 'Bagus! Tingkatkan terus kepedulian dan keberanian dalam membela nilai-nilai kemanusiaan.'}
       </p>
