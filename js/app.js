@@ -790,14 +790,14 @@ const sila5Scenarios = [
 
 // Variabel Global Game
 let currentStep = 0;
-let totalScore = 0;
+let totalScore = 100;
 
 // ================= ROUTER MINI GAME =================
 const chatGameContainer = document.querySelector(".chat-game-container");
 
 function initGame() {
   currentStep = 0;
-  totalScore = 0;
+  totalScore = 100;
 
   chatGameContainer.classList.remove(
     "challenge-sila-1",
@@ -937,8 +937,7 @@ function handleSila1OptionSelect(optionIndex) {
 }
 
 function showSila1FinalResult() {
-  const maxPossibleScore = sila1Scenarios.length * 100;
-  const finalScore = Math.round((totalScore / maxPossibleScore) * 100);
+  const finalScore = Math.max(0, Math.round(totalScore));
   
   const chatBody = document.getElementById('chatBody');
   const gameFooter = document.getElementById('gameFooter');
