@@ -944,19 +944,25 @@ function showSila1FinalResult() {
   const gameFooter = document.getElementById('gameFooter');
 
   chatBody.innerHTML = `
-    <div style="text-align: center; padding: 20px;">
-      <h3>Hasil Uji Integritas Digital</h3>
-      <h1 style="font-size: 2.5rem; color: #2563eb; margin: 10px 0;">${finalScore}%</h1>
-      <p style="color: #475569; font-size: 0.9rem;">
+    <section class="fact-final-result" style="text-align: center; padding: 20px;">
+      <div class="fact-final-icon" style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
+      <h3 style="font-size: 1.25rem; font-weight: bold; color: #1e293b; margin-bottom: 5px;">Uji Integritas Selesai!</h3>
+      <div class="fact-final-score" style="font-size: 2.5rem; font-weight: bold; color: #2563eb; margin: 10px 0;">${finalScore}%</div>
+      <p style="color: #475569; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
         ${finalScore >= 85 
           ? 'Luar biasa! Kamu menunjukkan integritas moral dan rasa saling menghargai yang tinggi di ruang digital.' 
           : 'Bagus! Tetap jaga kejujuran dan rasa saling menghargai dalam setiap obrolan kampus ya.'}
       </p>
-    </div>
+      <p style="color: #64748b; font-size: 0.85rem;">
+        Menjaga ruang digital tetap beretika dimulai dari kejujuran moral dalam setiap tindakan kecil.
+      </p>
+    </section>
   `;
 
   gameFooter.innerHTML = `
-    <button class="next-btn" onclick="initGame()" style="width: 100%; padding: 10px; border-radius: 8px;">Coba Lagi 🔄</button>
+    <button type="button" class="primary-btn full py-2 fw-semibold" onclick="initGame()" style="border-radius: 10px; width: 100%;">
+      Coba Lagi 🔄
+    </button>
   `;
 }
 
@@ -1119,15 +1125,19 @@ function showSila2FinalResult() {
   const gameFooter = document.getElementById('gameFooter');
 
   chatBody.innerHTML = `
-    <div style="text-align: center; padding: 30px 20px;">
-      <h3>Hasil Simulasi P3K Kemanusiaan</h3>
-      <h1 style="font-size: 2.5rem; color: #2563eb; margin: 10px 0;">${finalScore}%</h1>
-      <p style="color: #475569; font-size: 0.9rem;">
+    <section class="fact-final-result" style="text-align: center; padding: 20px;">
+      <div class="fact-final-icon" style="font-size: 3rem; margin-bottom: 10px;">🤝</div>
+      <h3 style="font-size: 1.25rem; font-weight: bold; color: #1e293b; margin-bottom: 5px;">Simulasi P3K Selesai!</h3>
+      <div class="fact-final-score" style="font-size: 2.5rem; font-weight: bold; color: #2563eb; margin: 10px 0;">${finalScore}%</div>
+      <p style="color: #475569; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">
         ${finalScore >= 75 
           ? 'Luar biasa! Anda memiliki kepekaan sosial, empati mendalam, dan menjunjung tinggi martabat manusia.' 
           : 'Bagus! Tingkatkan terus kepedulian dan keberanian dalam membela nilai-nilai kemanusiaan.'}
       </p>
-    </div>
+      <p style="color: #64748b; font-size: 0.85rem;">
+        Kepedulian nyata dan empati adalah kunci utama dalam meredakan perundungan di ruang digital.
+      </p>
+    </section>
   `;
 
   gameFooter.innerHTML = `
