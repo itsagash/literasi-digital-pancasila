@@ -797,7 +797,7 @@ const chatGameContainer = document.querySelector(".chat-game-container");
 
 function initGame() {
   currentStep = 0;
-  totalScore = 100;
+  totalScore = 0;
 
   chatGameContainer.classList.remove(
     "challenge-sila-1",
