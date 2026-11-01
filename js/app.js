@@ -871,7 +871,7 @@ function initGame() {
 function loadSila1Scenario() {
   const scenario = sila1Scenarios[currentStep];
   document.getElementById('chatScenarioTitle').innerText = scenario.title;
-  document.getElementById('chatScore').innerText = totalScore;
+  document.getElementById('chatScore').innerText = Math.max(0, Math.round(totalScore));
   
   const chatBody = document.getElementById('chatBody');
   const gameFooter = document.getElementById('gameFooter');
@@ -902,8 +902,10 @@ function handleSila1OptionSelect(optionIndex) {
   const scenario = sila1Scenarios[currentStep];
   const selected = scenario.options[optionIndex];
   
-  const currentAverage = Math.round(totalScore / (currentStep + 1));
-  document.getElementById('chatScore').innerText = currentAverage;
+  const penalty = 100 - selected.score;
+  totalScore = Math.max(0, totalScore - penalty);
+
+  document.getElementById('chatScore').innerText = Math.round(totalScore);
 
   const chatBody = document.getElementById('chatBody');
   
@@ -938,7 +940,6 @@ function handleSila1OptionSelect(optionIndex) {
 
 function showSila1FinalResult() {
   const finalScore = Math.max(0, Math.round(totalScore));
-  
   const chatBody = document.getElementById('chatBody');
   const gameFooter = document.getElementById('gameFooter');
 
